@@ -10,12 +10,12 @@ import Townfun from './component/Townfun';
 function App() {
   return (
     <>
-      {/* <City/>
-    <Country />  */}
+      {/* <City/> */}
+    <Country /> 
     
-   {/* <Countryfun />
-   <Townfun/> */}
-   <Button/>
+    {/* <Countryfun /> */}
+   {/* <Townfun/>  */}
+   {/* <Button/> */}
     </>
    );
 

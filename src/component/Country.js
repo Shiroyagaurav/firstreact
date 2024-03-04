@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import City from './City';
 
 export default class Country extends Component {
 
@@ -24,11 +25,13 @@ export default class Country extends Component {
     }
     render() {
         return (
+
             <>
                 <h1>city information</h1>
                 <h2> city name is Country {this.state.name} </h2>
                 <h3>this time is{this.state.timezone}</h3>
                 <button onClick={this.changecountry}>change country </button>
+          <City cn={this.state.name} />
             </>
 
 

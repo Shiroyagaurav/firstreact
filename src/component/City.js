@@ -32,6 +32,10 @@ import React, { Component } from 'react';
             <h3>city population {this.state.population}</h3>
             <h4>city eduction { this.state.bestfood}</h4>
             <button onClick={this.changecity}>change city </button>
+
+            {
+              this .props.cn==='india' ?<h3>delhi</h3> :<h4>newyork</h4>
+            }
           </>
            
         );
