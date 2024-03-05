@@ -1,5 +1,6 @@
 
 import './App.css';
+import Doctor from './Container/Doctor';
 import Button from './component/Button';
 import City from './component/City';
 import Country from './component/Country';
@@ -11,11 +12,12 @@ function App() {
   return (
     <>
       {/* <City/> */}
-    <Country /> 
+    {/* <Country />  */}
     
     {/* <Countryfun /> */}
    {/* <Townfun/>  */}
    {/* <Button/> */}
+   <Doctor/>
     </>
    );
 

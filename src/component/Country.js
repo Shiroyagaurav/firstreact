@@ -31,7 +31,7 @@ export default class Country extends Component {
                 <h2> city name is Country {this.state.name} </h2>
                 <h3>this time is{this.state.timezone}</h3>
                 <button onClick={this.changecountry}>change country </button>
-          <City cn={this.state.name} />
+                 <City cn={this.state.name} />
             </>
 
 
