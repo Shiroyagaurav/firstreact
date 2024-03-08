@@ -1,44 +1,61 @@
-import React, { Component } from 'react';
+// import React, { useState, useEffect } from 'react';
 
-class Timer extends Component {
+// function Timerfun() {
+//     const [time, setTime] = useState(new Date());
 
-    constructor(props) {
-        super(props);
-        this.state = {
-            time: new Date()
+//     const tick = () => {
+//         setTime(new Date());
+//     };
+
+//     useEffect(() => {
+//         console.log("componentDidMount");
+//         const timerID = setInterval(tick, 1000);
+
+//         return () => {
+//             console.log("componentWillUnmount");
+//             clearInterval(timerID);
+//         };
+//     }, []);
+
+//     useEffect(() => {
+//         console.log("componentDidUpdate");
+//     }, [time]);
+
+//     return (
+//         <div>
+//             <h2>Timer</h2>
+//             <p>{time.toLocaleTimeString()}</p>
+//         </div>
+//     );
+// }
+
+// export default Timerfun;
+
+// import { clear } from '@testing-library/user-event/dist/clear';
+import React, { useEffect, useState } from 'react';
+
+function Timerfun() {
+
+    const [time,settime]=useState=(new Date ());
+
+    const tick=()=>{
+        settime( new Date());
+    }
+    useEffect(()=>{
+        const timeref=setInterval(tick,1000)
+
+        return()=>{
+            clearInterval(timeref);
         }
-    }
-    tick = () => {
-        this.setState({
-            time: new Date()
-        })
-    }
+    },[])
 
 
-    componentDidMount = () => {
-        console.log("3.componentDidMount");
-        setInterval(this.tick, 1000);
-    }
-
-    componentDidUpdate = (prevprops, prevstate) => {
-        if (this.state.time !== prevstate.time) {
-            console.log("4,component did mount");
-        }
-    }
-
-    componentWillUnmount=()=>{
-        clearInterval(this.timeref);
-    }
-
-
-    render() {
-        return (
-            <div>
-                <h2>Timer</h2>
-                <p>{this.state.time.toLocaleTimeString()}</p>
-            </div>
-        );
-    }
+   
+    return (
+        <div>
+            <p>{time.toLocaleTimeString()}</p>
+        </div>
+    );
 }
 
-export default Timer;
+export default Timerfun;
