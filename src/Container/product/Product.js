@@ -4,6 +4,8 @@ import { Button, Card, CardBody, CardSubtitle, CardText, CardTitle } from 'react
 // setSearchTerm(event.target.value);
 function Product(props) {
     const [Products, setproduct] = useState([]);
+    const [search, setSearch] = useState("");
+    const [sort, setsort] = useState("");
     
 
 
@@ -12,8 +14,34 @@ function Product(props) {
         const data = await response.json()
         setproduct(data);
     }
-    const handleSearch = (event) => {
-        console.log(event);
+    const handleSearch = () => {
+        // console.log("ghfd");
+        let fdata=[];
+        fdata=Products.filter((v)=>(
+v.title.toLowerCase().includes(search.toLowerCase())||
+v.price.toString().includes(search.toString())||
+v.description.toLowerCase().includes(search.toLowerCase())
+
+        ))
+    
+
+        fdata.sort((a,b)=>{
+            if(sort === 'hl'){
+                return a.price -b.price
+            } else if(sort ==="lh"){
+                return b.price-b.price
+            } else if(sort ==="az"){
+                return a.title.localeCompare(b.title) 
+            }else if(sort ==="za"){
+                return b.title.localeCompare(a.title) 
+            }
+        })
+      
+        return fdata;
+
+      
+       
+      
        
       };
 
@@ -22,6 +50,8 @@ function Product(props) {
 
 
     }, [])
+const finddata=handleSearch();
+
 
     return (
         <div className='container'>
@@ -32,11 +62,19 @@ function Product(props) {
             type="text"
             placeholder="Search..."
            
-            onChange={handleSearch}
+            onChange={(event)=>setSearch(event.target.value)}
           />
+
+          <select name='sort' onChange={(event)=>setsort(event.target.value)}>
+            <option value="0">select product</option>
+            <option value="hl">high to low</option>
+            <option value="lh">low to high</option>
+            <option value="az"> a to z</option>
+            <option value="za">z to a</option>
+          </select>
         </div>
                 {
-                    Products.map((v, i) => (
+                    finddata.map((v, i) => (
                         <div className="col-md-4 gy-4">
                             <Card
                                 style={{
@@ -70,4 +108,3 @@ function Product(props) {
 }
 
 export default Product;
-// const [searchTerm, setSearchTerm] = useState("");
